@@ -1875,7 +1875,7 @@ textarea.w-input, textarea.w-select {
 }
 .w-nav-link:hover {
   text-decoration: none;
-  color: #222;
+  color: #338cae;
 }
 .w-nav-link.w--current {
   color: #0082f3;
@@ -2203,7 +2203,6 @@ p {
 }
 .section.main {
   margin-top: 73px;
-  background-color: #4dbd90;
   background-image: url(images/main.jpg);
   background-position: 0% 23%;
   background-size: cover;
@@ -2227,7 +2226,7 @@ p {
 }
 .section.footer.copyright {
   padding-top: 19px;
-  padding-bottom: 19px;
+  padding-bottom: 12px;
   background-color: #1c1d1f;
   color: #939596;
   font-size: 14px;
@@ -2501,7 +2500,7 @@ html.w-mod-js *[data-ix="fade-in-on-scroll"] {
   }
   .nav-link {
     padding: 18px 0px;
-    color: white;
+    color: #333;
   }
   .nav-link:hover {
     box-shadow: transparent 0px 3px 0px 0px inset;
@@ -2515,13 +2514,13 @@ html.w-mod-js *[data-ix="fade-in-on-scroll"] {
     font-size: 30px;
   }
   .nav-link.menu.w--open {
-    background-color: black;
-    color: white;
+    background-color: #dde7ed;
+    color: #999;
   }
   .nav-menu {
     padding-top: 13px;
     padding-bottom: 13px;
-    background-color: black;
+    background-color: #dde7ed;
   }
   .main-feature-group {
     margin-top: 0px;
