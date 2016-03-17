@@ -30,6 +30,16 @@
   margin-top: -7.5px;
   display: inline-block;
 }
+.start-work-btn {
+  color: white;
+  background-color: #008de2;
+  border-radius: 5px;
+  padding: 15px 30px;
+  text-decoration: none;
+}
+.start-work-block{
+  margin-top: 50px;
+}
 
 @media screen and (max-width: 991px) {
   .problems-logo-number {
