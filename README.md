@@ -1,12 +1,20 @@
-# Iq300-Lp-Consulting readme
+# Iq300-landing-consulting readme
 
-Generated on 2016-03-17 using
-[generator-yeogurt@1.4.0](https://github.com/larsonjj/generator-yeogurt)
+## Development
 
-## Description
+`gulp serve`: Compiles preprocessors and boots up development server
+`gulp serve --open`: Same as `gulp serve` but will also open up site/app in your default browser
+`gulp serve --production`: Same as `gulp serve` but will run all production tasks so you can view the site/app in it's final optimized form
 
-This is an example readme file.
-Describe your site/app here.
+## Build
+
+`gulp --production`: Same as `gulp serve --production` also run `gulp test` and  not boot up production server
+
+## Deploy
+
+`gulp ghPages` deploys `build` dir to Github Pages
+
+`gulp s3:staging` or `gulp s3:production` — add AWS credentials to `config/keys.json`
 
 ## Technologies used
 
@@ -38,16 +46,7 @@ Code Management
 - [Git](https://git-scm.com/)
 
 
-## Automated tasks
-
-This project uses [Gulp](http://gulpjs.com) to run automated tasks for development and production builds.
-The tasks are as follows:
-
-`gulp --production`: Same as `gulp serve --production` also run `gulp test` and  not boot up production server
-
-`gulp serve`: Compiles preprocessors and boots up development server
-`gulp serve --open`: Same as `gulp serve` but will also open up site/app in your default browser
-`gulp serve --production`: Same as `gulp serve` but will run all production tasks so you can view the site/app in it's final optimized form
+## See also
 
 `gulp test`: Lints all `*.js` file in the `source` folder using eslint
 

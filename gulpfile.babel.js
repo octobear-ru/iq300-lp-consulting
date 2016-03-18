@@ -14,7 +14,7 @@ const plugins = gulpLoadPlugins();
 let config = pjson.config;
 let args = minimist(process.argv.slice(2));
 let dirs = config.directories;
-let taskTarget = args.production ? dirs.destination : dirs.temporary;
+let taskTarget = (args.production || args.staging) ? dirs.destination : dirs.temporary;
 
 // Create a new browserSync instance
 let browserSync = browserSyncLib.create();

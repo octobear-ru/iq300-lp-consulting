@@ -1,0 +1,22 @@
+{
+  "name": "iq300-landing-consulting",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Alexander Mescheryakov <sibsfinx@ya.ru>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/octobear-ru/iq300-lp-consulting",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "~3.3.6"
+  }
+}

@@ -7,7 +7,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
 
   // Watch task
   gulp.task('watch', () => {
-    if (!args.production) {
+    if (!args.production && !args.staging) {
       // Styles
       gulp.watch([
         path.join(dirs.source, dirs.styles, '**/*.{scss,sass}'),

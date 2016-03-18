@@ -1,0 +1,23 @@
+(function() {
+  var keys;
+
+  keys = {
+    s3: {
+      production: {
+        region: 'us-west-2',
+        key: '',
+        secret: '',
+        bucket: ''
+      },
+      staging: {
+        region: 'us-west-2',
+        key: '',
+        secret: '',
+        bucket: ''
+      }
+    }
+  };
+
+  module.exports = keys;
+
+}).call(this);

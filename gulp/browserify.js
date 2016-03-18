@@ -4,20 +4,31 @@ import path from 'path';
 import glob from 'glob';
 import browserify from 'browserify';
 import watchify from 'watchify';
-import envify from 'envify';
+import envify from 'envify/custom';
 import babelify from 'babelify';
 import _ from 'lodash';
 import vsource from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import gulpif from 'gulp-if';
+import notify from 'gulp-notify';
 
 export default function(gulp, plugins, args, config, taskTarget, browserSync) {
   let dirs = config.directories;
   let entries = config.entries;
+  let environment = config.environment;
 
   let browserifyTask = (files) => {
     return files.map((entry) => {
       let dest = path.resolve(taskTarget);
+
+      let appEnv;
+      if (args.production) {
+        appEnv = environment.production;
+      } else if (args.staging) {
+        appEnv = environment.staging;
+      } else {
+        appEnv = environment.development;
+      }
 
       // Options
       let customOpts = {
@@ -25,13 +36,16 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
         debug: true,
         transform: [
           babelify, // Enable ES6 features
-          envify // Sets NODE_ENV for better optimization of npm packages
+          envify({
+            NODE_ENV: "development",
+            config: appEnv
+          }) // Sets NODE_ENV for better optimization of npm packages
         ]
       };
 
       let bundler = browserify(customOpts);
 
-      if (!args.production) {
+      if (!args.production && !args.staging) {
         // Setup Watchify for faster builds
         let opts = _.assign({}, watchify.args, customOpts);
         bundler = watchify(browserify(opts));
@@ -49,10 +63,14 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
             );
             this.emit('end');
           })
+          .on('error', notify.onError({
+              message: 'Browserify compile error: <%= error.message %>',
+              sound: false
+          }))
           .pipe(vsource(entry))
           .pipe(buffer())
           .pipe(plugins.sourcemaps.init({loadMaps: true}))
-            .pipe(gulpif(args.production, plugins.uglify()))
+            .pipe(gulpif((args.production || args.staging), plugins.uglify()))
             .on('error', plugins.util.log)
           .pipe(plugins.rename(function(filepath) {
             // Remove 'source' directory as well as prefixed folder underscores
@@ -72,7 +90,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
           });
       };
 
-      if (!args.production) {
+      if (!args.production && !args.staging) {
         bundler.on('update', rebundle); // on any dep update, runs the bundler
         bundler.on('log', plugins.util.log); // output build logs to terminal
       }

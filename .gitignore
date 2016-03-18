@@ -6,3 +6,5 @@ tmp
 .grunt
 .DS_Store
 .awspublish-*
+.publish*
+config/keys.js
