@@ -2,6 +2,8 @@
 
 ## Development
 
+`nvm use` switches to nodejs version from `.nvmrc`
+
 `gulp serve`: Compiles preprocessors and boots up development server
 `gulp serve --open`: Same as `gulp serve` but will also open up site/app in your default browser
 `gulp serve --production`: Same as `gulp serve` but will run all production tasks so you can view the site/app in it's final optimized form
